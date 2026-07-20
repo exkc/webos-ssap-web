@@ -209,7 +209,9 @@ function setResponseStatus(message) {
 
   respStatus.value = message;
 }
-
+requestkey_send.addEventListener("click", (e) => {
+	sendKey(requestkey_key.value);
+});
 function sendRequest(uri, payload) {
     if (!isSSAPConnected()) {
     console.warn('syncRequest: SSAP not connected');
