@@ -26,10 +26,14 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
       height: 50px;
     }
 
+    .capture,#captureotterbox {
+
+      width: calc(100vw - 188px - 30px) ;
+      margin-left: 5px;
+    }
     .capture {
-      height: 80vh;
       display: inline-block;
-      width: calc(80vh * 16 / 9);
+       aspect-ratio: 16 / 9;
       position: relative;
       border: 1px dashed black;
       margin-bottom: 5pt;
@@ -51,12 +55,16 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
       display: inline-block;
       vertical-align: top;
       margin-left: 0.5em;
+      margin-top :1em;
     }
 
     .front {
       z-index: 99999;
     }
 
+    #capturerebox {
+  display: flex;
+}
     table#keypad {
       display: inline-table;
       border: 1px solid black;
@@ -79,6 +87,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     div#request > p {
       font-weight: bold;
     }
+    #keypad,#request {width:100vw;}
   </style>
 </head>
 
@@ -87,10 +96,14 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <input type="text" id="ip" placeholder="127.0.0.1" value="" />
     <label for="ssl">SSL:</label><input type="checkbox" id="ssl" title="SSL" />
     <button id="connect">connect</button><button id="disconnect" disabled>disconnect</button>
-    <label for="pause_preview">pause preview:</label><input type="checkbox" id="pause_preview" title="pause preview" />
   </div>
-  <pre id="log" class="logbar"></pre>
-  <div class="capture"></div><div id="remote"></div><br>
+  <div id="capturerebox"> 
+<details id='captureotterbox'>
+  <summary>Preview</summary>
+  <div class="capture"></div>
+  </details>
+  <div id="remote"></div>
+  </div>
   <table id="keypad">
     <tr>
       <td></td>
@@ -129,7 +142,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
       <td><button class="keypad" data-key="KEY_LGE_CURSOR_HIDE">hide</button></td>
     </tr>
   </table>
-
+  <br>
   <div id="request">
     <div id="custom_request">
     <p>request</p>
@@ -177,6 +190,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
     <label for="resp_payload">payload:</label><br>
     <textarea id="resp_payload" rows="5" cols="100" readonly></textarea>
   </div>
+  </div>
+  <pre id="log" class="logbar"></pre>
 
   <script>
     window.onerror = function (err) {

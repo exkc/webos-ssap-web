@@ -130,7 +130,7 @@ reqDiv.addEventListener('keydown', (evt) => {
 });
 
 /* "pause preview" checkbox */
-const pausePreview = document.getElementById('pause_preview');
+const pausePreview = document.getElementById('captureotterbox');
 
 /* controls whether preview image should be updated */
 let previewEnabled = false;
@@ -145,7 +145,7 @@ const previewEnabledEvent = new Event('previewEnabled');
 function updatePreviewEnabled() {
   const oldPreviewEnabled = previewEnabled;
 
-  previewEnabled = !pausePreview.checked;
+  previewEnabled = !pausePreview.open;
 
   /* only fire on change from disabled to enabled */
   if (previewEnabled && !oldPreviewEnabled) {
@@ -153,7 +153,7 @@ function updatePreviewEnabled() {
   }
 }
 
-pausePreview.addEventListener('change', (evt) => updatePreviewEnabled());
+pausePreview.addEventListener('click', (evt) => updatePreviewEnabled());
 updatePreviewEnabled();
 
 async function waitForPreviewEnable() {
